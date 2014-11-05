@@ -9,6 +9,5 @@ namespace iSchool.Api.Core.Model
 	public class Instituicao
 	{
 		public int Id { get; set; }
-		public int Id { get; set; }
 	}
 }
