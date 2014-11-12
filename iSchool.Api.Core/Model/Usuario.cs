@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.Core.Model
 {
-	public class Dispensa
+	public class Usuario : IEntityBase 
 	{
 		public int Id { get; set; }
 	}

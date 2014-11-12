@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.Core.Model
 {
-	public class Frequencia
+	public class Comunicado : IEntityBase
 	{
 		public int Id { get; set; }
+		public string Nome { get; set; }
+		public DateTime Enviado { get; set; }
 	}
 }

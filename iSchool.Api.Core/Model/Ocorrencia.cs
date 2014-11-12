@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.Core.Model
 {
-	public class Localizacao
+	public class Ocorrencia : IEntityBase
 	{
 		public int Id { get; set; }
+		public string Titulo { get; set; }
+		public string Descricao { get; set; }
 	}
 }
