@@ -21,6 +21,10 @@ namespace iSchool.Api.ServiceInterface
 		{
 			return new data.Aluno().GetCollection(0);
 		}
+		public List<model.Aluno> Get(FilterAlunos request)
+		{
+			return new data.Aluno().GetCollection(request.nome, request.turmaId, request.responsavelId);
+		}
 		public void Insert(NewAluno request)
 		{
 			new data.Aluno().Insert(request.Aluno);
@@ -32,6 +36,28 @@ namespace iSchool.Api.ServiceInterface
 		public void Delete(DeleteAluno request)
 		{
 			new data.Aluno().Delete(request.Id);
+		}
+		public List<DiarioDeSalaResponse> GetDiario(DiarioDeSala request)
+		{
+			List<model.Aluno> alunos = new data.Aluno().GetLista(request.ProfessorId, request.CadeiraId);
+			List<DiarioDeSalaResponse> response = new List<DiarioDeSalaResponse>();
+			foreach (model.Aluno aluno in alunos)
+			{
+				response.Add(new DiarioDeSalaResponse
+				{
+					Ordem = aluno.AulasAtendidas.FirstOrDefault().OrdemChamada,
+					Nome = aluno.Nome,
+					Aulas = new List<bool>()
+				});
+				foreach(model.Aula aula in aluno.AulasAtendidas.FirstOrDefault().Aulas.FirstOrDefault().Aulas)
+				{
+					if (aula.Ausencias.Find(ausencia => ausencia.Educando.Aluno.Id == aluno.Id) != null)
+						response[response.Count - 1].Aulas.Add(false);
+					else
+						response[response.Count - 1].Aulas.Add(true);
+				}
+			}
+			return response;
 		}
 	}
 }

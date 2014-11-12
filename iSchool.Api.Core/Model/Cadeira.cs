@@ -10,6 +10,8 @@ namespace iSchool.Api.Core.Model
 	{
 		public int Id { get; set; }
 		public int DisciplinaId { get; set; }
+		public int TurmaId { get; set; }
+		public Turma Turma { get; set; }
 		public Disciplina Disciplina { get; set; }
 		public int ProfessorId { get; set; }
 		public Professor Professor { get; set; }

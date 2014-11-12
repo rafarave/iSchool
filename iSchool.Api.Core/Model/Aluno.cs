@@ -20,11 +20,11 @@ namespace iSchool.Api.Core.Model
 		public List<Ocorrencia> Ocorrencias { get; set; }
 		public Boletim Boletim { get; set; }
 
-	}
-	public class DadosCadastrais
-	{
-		public int alunoId { get; set; }
-		public Aluno Aluno { get; set; }
+	//}
+	//public class DadosCadastrais
+	//{
+	//	public int alunoId { get; set; }
+	//	public Aluno Aluno { get; set; }
 		public string Nome { get; set; }
 		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
 		[Display(Name = "Data de nascimento")]

@@ -18,6 +18,14 @@ namespace iSchool.Api.ServiceModel
 	{
 	}
 
+	[Route("/alunos/", Verbs = "GET")]
+	public class FilterAlunos
+	{
+		public string nome { get; set; }
+		public int turmaId { get; set; }
+		public int responsavelId { get; set; }
+	}
+
 	[Route("/alunos/new/", Verbs = "POST")]
 	public class NewAluno
 	{
@@ -35,5 +43,16 @@ namespace iSchool.Api.ServiceModel
 	{
 		public int Id { get; set; }
 	}
-
+	[Route("/diario/", Verbs = "get")]
+	public class DiarioDeSala
+	{
+		public int ProfessorId { get; set; }
+		public int CadeiraId { get; set; }
+	}
+	public class DiarioDeSalaResponse
+	{
+		public int Ordem { get; set; }
+		public string Nome { get; set; }
+		public List<bool> Aulas { get; set; }
+	}
 }
