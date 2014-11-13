@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace iSchool.Api.Core.Data
 		}
 		public List<T> GetCollection(int id)
 		{
-			return id != 0 ? GetCollection().Where(x => x.Id == id).ToList() : GetCollection();
+			return id != 0 ? GetCollection().Where(x => x.Id == id).ToList() : GetCollection().ToList();
 		}
 		public void Delete(int id)
 		{
