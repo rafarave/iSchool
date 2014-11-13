@@ -12,8 +12,6 @@ namespace iSchool.Api.Core.Model
 
 		public int CadeiraId { get; set; }
 		public Cadeira Cadeira { get; set; }
-		public int TurmaId { get; set; }
-		public Turma Turma { get; set; }
 		public DateTime Data { get; set; }
 		public string ConteudoLecionado { get; set; }
 		public List<Falta> Ausencias { get; set; }

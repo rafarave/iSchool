@@ -47,10 +47,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Aluno.cs" />
+    <Compile Include="Data\Aula.cs" />
+    <Compile Include="Data\Avaliacao.cs" />
+    <Compile Include="Data\Boletim.cs" />
+    <Compile Include="Data\Cadeira.cs" />
+    <Compile Include="Data\Comunicado.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\DataAccessBase.cs" />
     <Compile Include="Data\Disciplina.cs" />
+    <Compile Include="Data\Educando.cs" />
+    <Compile Include="Data\Falta.cs" />
+    <Compile Include="Data\Localizacao.cs" />
+    <Compile Include="Data\Matricula.cs" />
+    <Compile Include="Data\Mensalidade.cs" />
+    <Compile Include="Data\Nota.cs" />
+    <Compile Include="Data\Ocorrencia.cs" />
+    <Compile Include="Data\Periodo.cs" />
+    <Compile Include="Data\Planejamento.cs" />
+    <Compile Include="Data\Professor.cs" />
     <Compile Include="Data\Responsavel.cs" />
+    <Compile Include="Data\Turma.cs" />
+    <Compile Include="Data\Usuario.cs" />
     <Compile Include="Model\Aluno.cs" />
     <Compile Include="Model\Aula.cs" />
     <Compile Include="Model\Avaliacao.cs" />
