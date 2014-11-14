@@ -1,13 +1,13 @@
 ﻿using iSchool.Api.ServiceModel;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using model = iSchool.Api.Core.Model;
 using data = iSchool.Api.Core.Data;
-using ServiceStack;
+
 namespace iSchool.Api.ServiceInterface
 {
 	public class Aluno : Service
