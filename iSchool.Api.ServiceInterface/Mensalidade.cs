@@ -1,5 +1,6 @@
 ﻿using iSchool.Api.ServiceModel;
 using ServiceStack;
+using ServiceStack.ServiceInterface;
 using System.Collections.Generic;
 using data = iSchool.Api.Core.Data;
 using model = iSchool.Api.Core.Model;

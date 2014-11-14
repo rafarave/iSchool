@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using model = iSchool.Api.Core.Model;
 using data = iSchool.Api.Core.Data;
 using iSchool.Api.ServiceModel;
+using ServiceStack.ServiceInterface;
 
 namespace iSchool.Api.ServiceInterface
 {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ServiceStack;
+using ServiceStack.ServiceHost;
 namespace iSchool.Api.ServiceModel
 {
 	[Route("/professores/{Id}", Verbs = "GET")]

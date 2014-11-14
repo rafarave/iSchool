@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using model = iSchool.Api.Core.Model;
 using data = iSchool.Api.Core.Data;
 using ServiceStack;
+using ServiceStack.ServiceInterface;
 namespace iSchool.Api.ServiceInterface
 {
 	public class Aluno : Service

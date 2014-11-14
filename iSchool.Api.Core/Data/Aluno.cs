@@ -21,8 +21,7 @@ namespace iSchool.Api.Core.Data
 
 		protected override List<Model.Aluno> GetCollection()
 		{
-			return context.Alunos.Include("Responsaveis").Include("AulasAtendidas").Include("Aulas")
-				.ToList();
+			return context.Alunos.ToList();
 		}
 		public List<Model.Aluno> GetCollection(string nome = "", int turmaId = 0, int responsavelId = 0)
 		{
@@ -38,8 +37,8 @@ namespace iSchool.Api.Core.Data
 
 		public List<Model.Aluno> GetLista(int professorId, int cadeiraId)
 		{
-			List<Model.Aluno> alunos = context.Alunos.Include("Responsaveis").Include("AulasAtendidas").Include("Aulas")
-				.Include("Aulas").Include("Ausencias").Include("Avaliacoes").Include("Notas").Where(a =>
+			List<Model.Aluno> alunos = context.Alunos.Include("Responsaveis").Include("AulasAtendidas").Include("AulasAtendidas.Aulas")
+				.Include("AulasAtendidas.Aulas.Aulas").Include("AulasAtendidas.Aulas.Aulas.Ausencias").Include("AulasAtendidas.Aulas.Aulas.Avaliacoes").Include("AulasAtendidas.Aulas.Aulas.Notas").Where(a =>
 				(a.AulasAtendidas.Where(aa => aa.Aulas.Where(au=> au.ProfessorId == professorId && au.Id == cadeiraId).Count() > 0).Count() > 0)
 				).OrderBy(a => a.AulasAtendidas.OrderBy(au => au.OrdemChamada)).ToList();
 			return alunos;

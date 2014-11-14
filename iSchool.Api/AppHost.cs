@@ -1,6 +1,7 @@
 ﻿using Funq;
 using ServiceStack;
 using iSchool.Api.ServiceInterface;
+using ServiceStack.WebHost.Endpoints;
 
 namespace iSchool.Api
 {

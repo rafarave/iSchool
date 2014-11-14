@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ServiceStack;
 using iSchool.Api.ServiceModel;
+using ServiceStack.ServiceInterface;
 
 namespace iSchool.Api.ServiceInterface
 {
@@ -11,7 +12,7 @@ namespace iSchool.Api.ServiceInterface
 	{
 		public object Any(Hello request)
 		{
-			return new HelloResponse { Result = "Hello, {0}!".Fmt(request.Name) };
+			return new HelloResponse { Result = "Hello, {0}!" };
 		}
 
 		//public object Get(AlunoGet request)
