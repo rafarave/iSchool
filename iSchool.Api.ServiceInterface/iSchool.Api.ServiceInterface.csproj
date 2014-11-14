@@ -56,9 +56,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aluno.cs" />
+    <Compile Include="Aula.cs" />
+    <Compile Include="Avaliacao.cs" />
+    <Compile Include="Boletim.cs" />
+    <Compile Include="Cadeira.cs" />
+    <Compile Include="Comunicado.cs" />
     <Compile Include="Disciplina.cs" />
+    <Compile Include="Educando.cs" />
+    <Compile Include="Falta.cs" />
+    <Compile Include="Localizacao.cs" />
+    <Compile Include="Matricula.cs" />
+    <Compile Include="Mensalidade.cs" />
     <Compile Include="MyServices.cs" />
+    <Compile Include="Nota.cs" />
+    <Compile Include="Ocorrencia.cs" />
+    <Compile Include="Periodo.cs" />
+    <Compile Include="Planejamento.cs" />
+    <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responsavel.cs" />
+    <Compile Include="Turma.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
