@@ -66,6 +66,7 @@
     <Compile Include="Data\Planejamento.cs" />
     <Compile Include="Data\Professor.cs" />
     <Compile Include="Data\Responsavel.cs" />
+    <Compile Include="Data\SampleData.cs" />
     <Compile Include="Data\Turma.cs" />
     <Compile Include="Data\Usuario.cs" />
     <Compile Include="Model\Aluno.cs" />

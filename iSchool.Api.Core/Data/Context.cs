@@ -4,6 +4,12 @@ namespace iSchool.Api.Core.Data
 {
 	public class Context : DbContext
 	{
+		public Context()
+			: base("iSchoolDB")
+		{
+			Database.SetInitializer<Context>(
+				new SampleData());
+		}
 		public DbSet<Model.Aluno> Alunos { get; set; }
 		public DbSet<Model.Aula> Aulas { get; set; }
 		public DbSet<Model.Avaliacao> Avaliacoes { get; set; }
