@@ -60,11 +60,14 @@
     <Content Include="app\js\configuration\app.js" />
     <Content Include="app\js\configuration\routing.js" />
     <Content Include="app\js\controllers\comunicadosController.js" />
+    <Content Include="app\js\controllers\httpHandlerController.js" />
     <Content Include="app\js\controllers\inicioController.js" />
     <Content Include="app\js\controllers\mainController.js" />
-    <Content Include="app\js\directives\testeDirective.js" />
-    <Content Include="app\js\filters\testeFilter.js" />
+    <Content Include="app\js\services\httpRequestInterceptor.js" />
     <Content Include="app\js\services\testeService.js" />
+    <Content Include="app\partials\400.html" />
+    <Content Include="app\partials\404.html" />
+    <Content Include="app\partials\500.html" />
     <Content Include="app\partials\comunicados.html" />
     <Content Include="app\partials\inicio.html" />
     <Content Include="css\AdminLTE.css" />
@@ -1198,6 +1201,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\css\" />
+    <Folder Include="app\js\directives\" />
+    <Folder Include="app\js\filters\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
