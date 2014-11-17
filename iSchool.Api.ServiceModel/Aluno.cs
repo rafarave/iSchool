@@ -8,44 +8,44 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.ServiceModel
 {
-	[Route("/alunos/{Id}", Verbs = "GET")]
-	public class GetAluno
+	[Route("/alunos/{Id}", "GET")]
+	public class GetAluno : IReturn<Core.Model.Aluno>
 	{
 		public int Id { get; set; }
 	}
 
-	[Route("/alunos/", Verbs = "GET")]
-	public class GetAlunos
+	[Route("/alunos/", "GET")]
+	public class GetAlunos : IReturn<List<Core.Model.Aluno>>
 	{
 	}
 
-	[Route("/alunos/", Verbs = "GET")]
-	public class FilterAlunos
+	[Route("/alunos/", "GET")]
+	public class FilterAlunos : IReturn<List<Core.Model.Aluno>>
 	{
 		public string nome { get; set; }
 		public int turmaId { get; set; }
 		public int responsavelId { get; set; }
 	}
 
-	[Route("/alunos/new/", Verbs = "POST")]
+	[Route("/alunos/new/", "POST")]
 	public class NewAluno
 	{
 		public Core.Model.Aluno Aluno { get; set; }
 	}
 
-	[Route("/alunos/modify/", Verbs = "POST")]
+	[Route("/alunos/modify/", "POST")]
 	public class UpdateAluno
 	{
 		public Core.Model.Aluno Aluno { get; set; }
 	}
 
-	[Route("/alunos/delete/", Verbs = "get")]
+	[Route("/alunos/delete/", "GET")]
 	public class DeleteAluno
 	{
 		public int Id { get; set; }
 	}
-	[Route("/diario/", Verbs = "get")]
-	public class DiarioDeSala
+	[Route("/diario/", "GET")]
+	public class DiarioDeSala : IReturn<DiarioDeSalaResponse>
 	{
 		public int ProfessorId { get; set; }
 		public int CadeiraId { get; set; }

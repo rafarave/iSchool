@@ -26,15 +26,18 @@ namespace iSchool.Api.ServiceInterface
 		{
 			return new data.Aluno().GetCollection(request.nome, request.turmaId, request.responsavelId);
 		}
-		public void Insert(NewAluno request)
+		public model.Aluno Post(NewAluno request)
 		{
 			new data.Aluno().Insert(request.Aluno);
+			List<model.Aluno> alunos = new data.Aluno().GetCollection();
+			return alunos[alunos.Count() - 1];
 		}
-		public void Update(UpdateAluno request)
+		public model.Aluno Post(UpdateAluno request)
 		{
 			new data.Aluno().Update(request.Aluno);
+			return new data.Aluno().GetCollection(request.Aluno.Id).FirstOrDefault();
 		}
-		public void Delete(DeleteAluno request)
+		public void Get(DeleteAluno request)
 		{
 			new data.Aluno().Delete(request.Id);
 		}
