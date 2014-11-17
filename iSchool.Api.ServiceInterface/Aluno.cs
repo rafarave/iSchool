@@ -9,6 +9,7 @@ using model = iSchool.Api.Core.Model;
 using data = iSchool.Api.Core.Data;
 using ServiceStack;
 using ServiceStack.ServiceInterface;
+using ServiceStack.Common.Web;
 namespace iSchool.Api.ServiceInterface
 {
 	public class Aluno : Service
@@ -26,42 +27,42 @@ namespace iSchool.Api.ServiceInterface
 		{
 			return new data.Aluno().GetCollection(request.nome, request.turmaId, request.responsavelId);
 		}
-		public model.Aluno Post(NewAluno request)
+		public HttpResult Post(NewAluno request)
 		{
 			new data.Aluno().Insert(request.Aluno);
-			List<model.Aluno> alunos = new data.Aluno().GetCollection();
-			return alunos[alunos.Count() - 1];
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public model.Aluno Post(UpdateAluno request)
+		public HttpResult Put(UpdateAluno request)
 		{
 			new data.Aluno().Update(request.Aluno);
-			return new data.Aluno().GetCollection(request.Aluno.Id).FirstOrDefault();
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Get(DeleteAluno request)
+		public HttpResult Delete(DeleteAluno request)
 		{
 			new data.Aluno().Delete(request.Id);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public List<DiarioDeSalaResponse> GetDiario(DiarioDeSala request)
-		{
-			List<model.Aluno> alunos = new data.Aluno().GetLista(request.ProfessorId, request.CadeiraId);
-			List<DiarioDeSalaResponse> response = new List<DiarioDeSalaResponse>();
-			foreach (model.Aluno aluno in alunos)
-			{
-				response.Add(new DiarioDeSalaResponse
-				{
-					Ordem = aluno.AulasAtendidas.FirstOrDefault().OrdemChamada,
-					Nome = aluno.Nome,
-					Aulas = new List<bool>()
-				});
-				foreach(model.Aula aula in aluno.AulasAtendidas.FirstOrDefault().Aulas.FirstOrDefault().Aulas)
-				{
-					if (aula.Ausencias.Find(ausencia => ausencia.Educando.Aluno.Id == aluno.Id) != null)
-						response[response.Count - 1].Aulas.Add(false);
-					else
-						response[response.Count - 1].Aulas.Add(true);
-				}
-			}
-			return response;
-		}
+		//public List<DiarioDeSalaResponse> GetDiario(DiarioDeSala request)
+		//{
+		//	List<model.Aluno> alunos = new data.Aluno().GetLista(request.ProfessorId, request.CadeiraId);
+		//	List<DiarioDeSalaResponse> response = new List<DiarioDeSalaResponse>();
+		//	foreach (model.Aluno aluno in alunos)
+		//	{
+		//		response.Add(new DiarioDeSalaResponse
+		//		{
+		//			Ordem = aluno.AulasAtendidas.FirstOrDefault().OrdemChamada,
+		//			Nome = aluno.Nome,
+		//			Aulas = new List<bool>()
+		//		});
+		//		foreach(model.Aula aula in aluno.AulasAtendidas.FirstOrDefault().Aulas.FirstOrDefault().Aulas)
+		//		{
+		//			if (aula.Ausencias.Find(ausencia => ausencia.Educando.Aluno.Id == aluno.Id) != null)
+		//				response[response.Count - 1].Aulas.Add(false);
+		//			else
+		//				response[response.Count - 1].Aulas.Add(true);
+		//		}
+		//	}
+		//	return response;
+		//}
 	}
 }

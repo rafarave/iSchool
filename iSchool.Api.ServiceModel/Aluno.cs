@@ -14,12 +14,12 @@ namespace iSchool.Api.ServiceModel
 		public int Id { get; set; }
 	}
 
-	[Route("/alunos/", "GET")]
+	[Route("/alunos", "GET")]
 	public class GetAlunos : IReturn<List<Core.Model.Aluno>>
 	{
 	}
 
-	[Route("/alunos/", "GET")]
+	[Route("/alunos", "GET")]
 	public class FilterAlunos : IReturn<List<Core.Model.Aluno>>
 	{
 		public string nome { get; set; }
@@ -27,33 +27,21 @@ namespace iSchool.Api.ServiceModel
 		public int responsavelId { get; set; }
 	}
 
-	[Route("/alunos/new/", "POST")]
+	[Route("/alunos/", "POST")]
 	public class NewAluno
 	{
 		public Core.Model.Aluno Aluno { get; set; }
 	}
 
-	[Route("/alunos/modify/", "POST")]
+	[Route("/alunos/", "PUT")]
 	public class UpdateAluno
 	{
 		public Core.Model.Aluno Aluno { get; set; }
 	}
 
-	[Route("/alunos/delete/", "GET")]
+	[Route("/alunos/{Id}", "DELETE")]
 	public class DeleteAluno
 	{
 		public int Id { get; set; }
-	}
-	[Route("/diario/", "GET")]
-	public class DiarioDeSala : IReturn<DiarioDeSalaResponse>
-	{
-		public int ProfessorId { get; set; }
-		public int CadeiraId { get; set; }
-	}
-	public class DiarioDeSalaResponse
-	{
-		public int Ordem { get; set; }
-		public string Nome { get; set; }
-		public List<bool> Aulas { get; set; }
 	}
 }
