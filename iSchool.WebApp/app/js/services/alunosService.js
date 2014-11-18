@@ -19,5 +19,4 @@ angular.module('iSchoolApp.services')
 		}).error(function (data) { });
 	}
 
-
 });

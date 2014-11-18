@@ -15,7 +15,7 @@
 				<td>{{ aluno.Nome }}</td>
 				<td>{{ aluno.Email }}</td>
 				<td>{{ aluno.AprovadoUltimoPeriodo }}</td>
-				<td>{{ aluno.Nascimento }}</td>
+				<td>{{ aluno.Nascimento | momentParseDateASPNetJSON }}</td>
 				<td>{{ aluno.Numero }}</td>
 				<td>{{ aluno.CEP }}</td>
 			</tr>
