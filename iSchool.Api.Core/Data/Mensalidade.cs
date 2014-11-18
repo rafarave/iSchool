@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Mensalidades.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Mensalidade entity)
+		{
+			Model.Mensalidade original = context.Mensalidades.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Mensalidade> GetCollection()
 		{
 			return context.Mensalidades.ToList();
 		}
 
-		public override void Update(Model.Mensalidade entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

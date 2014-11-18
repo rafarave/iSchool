@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Usuarios.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Usuario entity)
+		{
+			Model.Usuario original = context.Usuarios.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Usuario> GetCollection()
 		{
 			return context.Usuarios.ToList();
 		}
 
-		public override void Update(Model.Usuario entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Aulas.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Aula entity)
+		{
+			Model.Aula original = context.Aulas.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Aula> GetCollection()
 		{
-			return context.Aulas.Include("Ausencias").Include("Cadeira").ToList();
+			return context.Aulas.ToList();
 		}
 
-		public override void Update(Model.Aula entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -8,30 +8,30 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.ServiceModel
 {
-	[Route("/avaliacoes/{Id}", Verbs = "GET")]
-	public class GetAvaliacao
+	[Route("/avaliacoes/{Id}", "GET")]
+	public class GetAvaliacao : IReturn<Core.Model.Avaliacao>
 	{
 		public int Id { get; set; }
 	}
 
-	[Route("/avaliacoes/", Verbs = "GET")]
-	public class GetAvaliacoes
+	[Route("/avaliacoes", "GET")]
+	public class GetAvaliacoes : IReturn<List<Core.Model.Avaliacao>>
 	{
 	}
 
-	[Route("/avaliacoes/new/", Verbs = "POST")]
+	[Route("/avaliacoes", "POST")]
 	public class NewAvaliacao
 	{
 		public Core.Model.Avaliacao Avaliacao { get; set; }
 	}
 
-	[Route("/avaliacoes/modify/", Verbs = "POST")]
+	[Route("/avaliacoes", "PUT")]
 	public class UpdateAvaliacao
 	{
 		public Core.Model.Avaliacao Avaliacao { get; set; }
 	}
 
-	[Route("/avaliacoes/delete/", Verbs = "get")]
+	[Route("/avaliacoes/{Id}", "DELETE")]
 	public class DeleteAvaliacao
 	{
 		public int Id { get; set; }

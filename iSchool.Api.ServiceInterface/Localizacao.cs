@@ -1,9 +1,14 @@
 ﻿using iSchool.Api.ServiceModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using model = iSchool.Api.Core.Model;
+using data = iSchool.Api.Core.Data;
 using ServiceStack;
 using ServiceStack.ServiceInterface;
-using System.Collections.Generic;
-using data = iSchool.Api.Core.Data;
-using model = iSchool.Api.Core.Model;
+using ServiceStack.Common.Web;
 
 namespace iSchool.Api.ServiceInterface
 {
@@ -11,24 +16,27 @@ namespace iSchool.Api.ServiceInterface
 	{
 		public model.Localizacao Get(GetLocalizacao request)
 		{
-			data.Localizacao aluno = new data.Localizacao();
-			return aluno.GetElement(request.Id);
+			data.Localizacao Localizacao = new data.Localizacao();
+			return Localizacao.GetElement(request.Id);
 		}
 		public List<model.Localizacao> Get(GetLocalizacoes request)
 		{
 			return new data.Localizacao().GetCollection(0);
 		}
-		public void Insert(NewLocalizacao request)
+		public HttpResult Post(NewLocalizacao request)
 		{
 			new data.Localizacao().Insert(request.Localizacao);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Update(UpdateLocalizacao request)
+		public HttpResult Put(UpdateLocalizacao request)
 		{
 			new data.Localizacao().Update(request.Localizacao);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Delete(DeleteLocalizacao request)
+		public HttpResult Delete(DeleteLocalizacao request)
 		{
 			new data.Localizacao().Delete(request.Id);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
 	}
 }

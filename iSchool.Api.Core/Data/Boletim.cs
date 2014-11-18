@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Boletins.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Boletim entity)
+		{
+			Model.Boletim original = context.Boletins.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Boletim> GetCollection()
 		{
-			return context.Boletins.Include("Aluno").Include("Notas").Include("Faltas").ToList();
+			return context.Boletins.ToList();
 		}
 
-		public override void Update(Model.Boletim entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -8,38 +8,30 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.ServiceModel
 {
-	[Route("/disciplinas/{Id}", Verbs = "GET")]
-	public class GetDisciplina
+	[Route("/disciplinas/{Id}", "GET")]
+	public class GetDisciplina : IReturn<Core.Model.Disciplina>
 	{
 		public int Id { get; set; }
 	}
 
-	[Route("/disciplinas/", Verbs = "GET")]
-	public class GetDisciplinas
+	[Route("/disciplinas", "GET")]
+	public class GetDisciplinas : IReturn<List<Core.Model.Disciplina>>
 	{
 	}
 
-	[Route("/disciplinas/", Verbs = "GET")]
-	public class FilterDisciplinas
-	{
-		public string nome { get; set; }
-		public int turmaId { get; set; }
-		public int responsavelId { get; set; }
-	}
-
-	[Route("/disciplinas/new/", Verbs = "POST")]
+	[Route("/disciplinas", "POST")]
 	public class NewDisciplina
 	{
 		public Core.Model.Disciplina Disciplina { get; set; }
 	}
 
-	[Route("/disciplinas/modify/", Verbs = "POST")]
+	[Route("/disciplinas", "PUT")]
 	public class UpdateDisciplina
 	{
 		public Core.Model.Disciplina Disciplina { get; set; }
 	}
 
-	[Route("/disciplinas/delete/", Verbs = "get")]
+	[Route("/disciplinas/{Id}", "DELETE")]
 	public class DeleteDisciplina
 	{
 		public int Id { get; set; }

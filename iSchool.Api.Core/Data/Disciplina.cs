@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Disciplinas.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Disciplina entity)
+		{
+			Model.Disciplina original = context.Disciplinas.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Disciplina> GetCollection()
 		{
 			return context.Disciplinas.ToList();
 		}
 
-		public override void Update(Model.Disciplina entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

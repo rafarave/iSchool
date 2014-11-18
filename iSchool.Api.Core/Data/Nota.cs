@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Notas.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Nota entity)
+		{
+			Model.Nota original = context.Notas.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Nota> GetCollection()
 		{
 			return context.Notas.ToList();
 		}
 
-		public override void Update(Model.Nota entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Matriculas.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Matricula entity)
+		{
+			Model.Matricula original = context.Matriculas.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Matricula> GetCollection()
 		{
 			return context.Matriculas.ToList();
 		}
 
-		public override void Update(Model.Matricula entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

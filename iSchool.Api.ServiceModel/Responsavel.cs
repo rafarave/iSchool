@@ -1,37 +1,37 @@
-﻿using System;
+﻿using ServiceStack;
+using ServiceStack.ServiceHost;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ServiceStack;
-using ServiceStack.ServiceHost;
 namespace iSchool.Api.ServiceModel
 {
-	[Route("/responsaveis/{Id}", Verbs = "GET")]
-	public class GetResponsavel
+	[Route("/responsavels/{Id}", "GET")]
+	public class GetResponsavel : IReturn<Core.Model.Responsavel>
 	{
 		public int Id { get; set; }
 	}
 
-	[Route("/responsaveis/", Verbs = "GET")]
-	public class GetResponsaveis
+	[Route("/responsavels", "GET")]
+	public class GetResponsaveis : IReturn<List<Core.Model.Responsavel>>
 	{
 	}
 
-	[Route("/responsaveis/new/", Verbs = "POST")]
+	[Route("/responsavels", "POST")]
 	public class NewResponsavel
 	{
 		public Core.Model.Responsavel Responsavel { get; set; }
 	}
 
-	[Route("/responsaveis/modify/", Verbs = "POST")]
+	[Route("/responsavels", "PUT")]
 	public class UpdateResponsavel
 	{
 		public Core.Model.Responsavel Responsavel { get; set; }
 	}
 
-	[Route("/responsaveis/delete/", Verbs = "get")]
+	[Route("/responsavels/{Id}", "DELETE")]
 	public class DeleteResponsavel
 	{
 		public int Id { get; set; }

@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Professores.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Professor entity)
+		{
+			Model.Professor original = context.Professores.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Professor> GetCollection()
 		{
 			return context.Professores.ToList();
 		}
 
-		public override void Update(Model.Professor entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Faltas.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Falta entity)
+		{
+			Model.Falta original = context.Faltas.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Falta> GetCollection()
 		{
 			return context.Faltas.ToList();
 		}
 
-		public override void Update(Model.Falta entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

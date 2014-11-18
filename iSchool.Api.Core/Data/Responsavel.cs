@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Responsaveis.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Responsavel entity)
+		{
+			Model.Responsavel original = context.Responsaveis.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Responsavel> GetCollection()
 		{
-			return context.Responsaveis.Include("Alunos").ToList();
+			return context.Responsaveis.ToList();
 		}
 
-		public override void Update(Model.Responsavel entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

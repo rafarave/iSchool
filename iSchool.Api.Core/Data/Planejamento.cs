@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Planejamentos.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Planejamento entity)
+		{
+			Model.Planejamento original = context.Planejamentos.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Planejamento> GetCollection()
 		{
 			return context.Planejamentos.ToList();
 		}
 
-		public override void Update(Model.Planejamento entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

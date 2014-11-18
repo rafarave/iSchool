@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Avaliacoes.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Avaliacao entity)
+		{
+			Model.Avaliacao original = context.Avaliacoes.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Avaliacao> GetCollection()
 		{
-			return context.Avaliacoes.Include("Notas").Include("Cadeira").Include("Periodo").ToList();
+			return context.Avaliacoes.ToList();
 		}
 
-		public override void Update(Model.Avaliacao entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

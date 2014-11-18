@@ -8,30 +8,30 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.ServiceModel
 {
-	[Route("/cadeiras/{Id}", Verbs = "GET")]
-	public class GetCadeira
+	[Route("/cadeiras/{Id}", "GET")]
+	public class GetCadeira : IReturn<Core.Model.Cadeira>
 	{
 		public int Id { get; set; }
 	}
 
-	[Route("/cadeiras/", Verbs = "GET")]
-	public class GetCadeiras
+	[Route("/cadeiras", "GET")]
+	public class GetCadeiras : IReturn<List<Core.Model.Cadeira>>
 	{
 	}
 
-	[Route("/cadeiras/new/", Verbs = "POST")]
+	[Route("/cadeiras", "POST")]
 	public class NewCadeira
 	{
 		public Core.Model.Cadeira Cadeira { get; set; }
 	}
 
-	[Route("/cadeiras/modify/", Verbs = "POST")]
+	[Route("/cadeiras", "PUT")]
 	public class UpdateCadeira
 	{
 		public Core.Model.Cadeira Cadeira { get; set; }
 	}
 
-	[Route("/cadeiras/delete/", Verbs = "get")]
+	[Route("/cadeiras/{Id}", "DELETE")]
 	public class DeleteCadeira
 	{
 		public int Id { get; set; }

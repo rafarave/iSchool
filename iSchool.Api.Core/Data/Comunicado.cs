@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Comunicados.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Comunicado entity)
+		{
+			Model.Comunicado original = context.Comunicados.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Comunicado> GetCollection()
 		{
 			return context.Comunicados.ToList();
 		}
 
-		public override void Update(Model.Comunicado entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -1,9 +1,14 @@
 ﻿using iSchool.Api.ServiceModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using model = iSchool.Api.Core.Model;
+using data = iSchool.Api.Core.Data;
 using ServiceStack;
 using ServiceStack.ServiceInterface;
-using System.Collections.Generic;
-using data = iSchool.Api.Core.Data;
-using model = iSchool.Api.Core.Model;
+using ServiceStack.Common.Web;
 
 namespace iSchool.Api.ServiceInterface
 {
@@ -11,24 +16,27 @@ namespace iSchool.Api.ServiceInterface
 	{
 		public model.Usuario Get(GetUsuario request)
 		{
-			data.Usuario aluno = new data.Usuario();
-			return aluno.GetElement(request.Id);
+			data.Usuario Usuario = new data.Usuario();
+			return Usuario.GetElement(request.Id);
 		}
 		public List<model.Usuario> Get(GetUsuarios request)
 		{
 			return new data.Usuario().GetCollection(0);
 		}
-		public void Insert(NewUsuario request)
+		public HttpResult Post(NewUsuario request)
 		{
 			new data.Usuario().Insert(request.Usuario);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Update(UpdateUsuario request)
+		public HttpResult Put(UpdateUsuario request)
 		{
 			new data.Usuario().Update(request.Usuario);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Delete(DeleteUsuario request)
+		public HttpResult Delete(DeleteUsuario request)
 		{
 			new data.Usuario().Delete(request.Id);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
 	}
 }

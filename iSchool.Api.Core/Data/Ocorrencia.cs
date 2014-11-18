@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Ocorrencias.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Ocorrencia entity)
+		{
+			Model.Ocorrencia original = context.Ocorrencias.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Ocorrencia> GetCollection()
 		{
 			return context.Ocorrencias.ToList();
 		}
 
-		public override void Update(Model.Ocorrencia entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

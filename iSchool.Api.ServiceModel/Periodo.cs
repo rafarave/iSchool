@@ -1,37 +1,37 @@
-﻿using System;
+﻿using ServiceStack;
+using ServiceStack.ServiceHost;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ServiceStack;
-using ServiceStack.ServiceHost;
 namespace iSchool.Api.ServiceModel
 {
-	[Route("/periodos/{Id}", Verbs = "GET")]
-	public class GetPeriodo
+	[Route("/periodos/{Id}", "GET")]
+	public class GetPeriodo : IReturn<Core.Model.Periodo>
 	{
 		public int Id { get; set; }
 	}
 
-	[Route("/periodos/", Verbs = "GET")]
-	public class GetPeriodos
+	[Route("/periodos", "GET")]
+	public class GetPeriodos : IReturn<List<Core.Model.Periodo>>
 	{
 	}
 
-	[Route("/periodos/new/", Verbs = "POST")]
+	[Route("/periodos", "POST")]
 	public class NewPeriodo
 	{
 		public Core.Model.Periodo Periodo { get; set; }
 	}
 
-	[Route("/periodos/modify/", Verbs = "POST")]
+	[Route("/periodos", "PUT")]
 	public class UpdatePeriodo
 	{
 		public Core.Model.Periodo Periodo { get; set; }
 	}
 
-	[Route("/periodos/delete/", Verbs = "get")]
+	[Route("/periodos/{Id}", "DELETE")]
 	public class DeletePeriodo
 	{
 		public int Id { get; set; }

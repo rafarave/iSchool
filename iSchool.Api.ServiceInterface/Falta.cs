@@ -1,9 +1,14 @@
 ﻿using iSchool.Api.ServiceModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using model = iSchool.Api.Core.Model;
+using data = iSchool.Api.Core.Data;
 using ServiceStack;
 using ServiceStack.ServiceInterface;
-using System.Collections.Generic;
-using data = iSchool.Api.Core.Data;
-using model = iSchool.Api.Core.Model;
+using ServiceStack.Common.Web;
 
 namespace iSchool.Api.ServiceInterface
 {
@@ -11,24 +16,27 @@ namespace iSchool.Api.ServiceInterface
 	{
 		public model.Falta Get(GetFalta request)
 		{
-			data.Falta aluno = new data.Falta();
-			return aluno.GetElement(request.Id);
+			data.Falta Falta = new data.Falta();
+			return Falta.GetElement(request.Id);
 		}
 		public List<model.Falta> Get(GetFaltas request)
 		{
 			return new data.Falta().GetCollection(0);
 		}
-		public void Insert(NewFalta request)
+		public HttpResult Post(NewFalta request)
 		{
 			new data.Falta().Insert(request.Falta);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Update(UpdateFalta request)
+		public HttpResult Put(UpdateFalta request)
 		{
 			new data.Falta().Update(request.Falta);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Delete(DeleteFalta request)
+		public HttpResult Delete(DeleteFalta request)
 		{
 			new data.Falta().Delete(request.Id);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
 	}
 }

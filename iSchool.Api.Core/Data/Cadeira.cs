@@ -18,28 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Cadeiras.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Cadeira entity)
+		{
+			Model.Cadeira original = context.Cadeiras.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Cadeira> GetCollection()
 		{
 			return context.Cadeiras.ToList();
 		}
-		public List<Model.Cadeira> GetDiarioClasse(int cadeiraId)
-		{
-			List<Model.Cadeira> cadeiras = context.Cadeiras
-				.Include("Alunos").Include("Aluno")
-				.Include("Aulas").Include("Ausencias")
-				.Include("Avaliacoes").Include("Periodo").Include("Notas")
-				.Include("Professor")
-				.Include("Turma")
-				.Include("Disciplina")
-				.Where(c => c.Id == cadeiraId)
-				.ToList();
-			return cadeiras;
-		}
 
-		public override void Update(Model.Cadeira entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using model = iSchool.Api.Core.Model;
 using data = iSchool.Api.Core.Data;
 using ServiceStack;
 using ServiceStack.ServiceInterface;
 using ServiceStack.Common.Web;
+
 namespace iSchool.Api.ServiceInterface
 {
 	public class Aluno : Service

@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Localizacoes.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Localizacao entity)
+		{
+			Model.Localizacao original = context.Localizacoes.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Localizacao> GetCollection()
 		{
 			return context.Localizacoes.ToList();
 		}
 
-		public override void Update(Model.Localizacao entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

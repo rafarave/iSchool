@@ -18,15 +18,17 @@ namespace iSchool.Api.Core.Data
 			context.Periodos.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Periodo entity)
+		{
+			Model.Periodo original = context.Periodos.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Periodo> GetCollection()
 		{
 			return context.Periodos.ToList();
 		}
 
-		public override void Update(Model.Periodo entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

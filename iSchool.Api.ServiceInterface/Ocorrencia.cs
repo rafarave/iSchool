@@ -1,9 +1,14 @@
 ﻿using iSchool.Api.ServiceModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using model = iSchool.Api.Core.Model;
+using data = iSchool.Api.Core.Data;
 using ServiceStack;
 using ServiceStack.ServiceInterface;
-using System.Collections.Generic;
-using data = iSchool.Api.Core.Data;
-using model = iSchool.Api.Core.Model;
+using ServiceStack.Common.Web;
 
 namespace iSchool.Api.ServiceInterface
 {
@@ -11,24 +16,27 @@ namespace iSchool.Api.ServiceInterface
 	{
 		public model.Ocorrencia Get(GetOcorrencia request)
 		{
-			data.Ocorrencia aluno = new data.Ocorrencia();
-			return aluno.GetElement(request.Id);
+			data.Ocorrencia Ocorrencia = new data.Ocorrencia();
+			return Ocorrencia.GetElement(request.Id);
 		}
 		public List<model.Ocorrencia> Get(GetOcorrencias request)
 		{
 			return new data.Ocorrencia().GetCollection(0);
 		}
-		public void Insert(NewOcorrencia request)
+		public HttpResult Post(NewOcorrencia request)
 		{
 			new data.Ocorrencia().Insert(request.Ocorrencia);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Update(UpdateOcorrencia request)
+		public HttpResult Put(UpdateOcorrencia request)
 		{
 			new data.Ocorrencia().Update(request.Ocorrencia);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
-		public void Delete(DeleteOcorrencia request)
+		public HttpResult Delete(DeleteOcorrencia request)
 		{
 			new data.Ocorrencia().Delete(request.Id);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
 	}
 }
