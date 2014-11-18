@@ -36,12 +36,7 @@ namespace iSchool.Api.Core.Data
 			GetCurrent(entity).State = System.Data.Entity.EntityState.Deleted;
 			context.SaveChanges();
 		}
-		public void Update(T entity)
-		{
-			T original = GetElement(entity.Id);
-			GetCurrent(entity).CurrentValues.SetValues(entity);
-			context.SaveChanges();
-		}
+		public abstract void Update(T entity);
 		public abstract DbEntityEntry GetCurrent(T entity);
 		public abstract void Insert(T entity);
 		protected abstract List<T> GetCollection();

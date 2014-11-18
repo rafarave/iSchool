@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Usuarios.ToList();
 		}
+
+		public override void Update(Model.Usuario entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

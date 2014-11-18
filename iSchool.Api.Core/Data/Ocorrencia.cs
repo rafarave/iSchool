@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Ocorrencias.ToList();
 		}
+
+		public override void Update(Model.Ocorrencia entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

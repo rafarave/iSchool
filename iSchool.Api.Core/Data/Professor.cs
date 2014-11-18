@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Professores.ToList();
 		}
+
+		public override void Update(Model.Professor entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

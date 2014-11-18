@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Disciplinas.ToList();
 		}
+
+		public override void Update(Model.Disciplina entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

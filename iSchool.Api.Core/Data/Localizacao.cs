@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Localizacoes.ToList();
 		}
+
+		public override void Update(Model.Localizacao entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Mensalidades.ToList();
 		}
+
+		public override void Update(Model.Mensalidade entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

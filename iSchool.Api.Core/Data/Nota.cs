@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Notas.ToList();
 		}
+
+		public override void Update(Model.Nota entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

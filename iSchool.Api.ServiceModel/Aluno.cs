@@ -27,13 +27,13 @@ namespace iSchool.Api.ServiceModel
 		public int responsavelId { get; set; }
 	}
 
-	[Route("/alunos/", "POST")]
+	[Route("/alunos", "POST")]
 	public class NewAluno
 	{
 		public Core.Model.Aluno Aluno { get; set; }
 	}
 
-	[Route("/alunos/", "PUT")]
+	[Route("/alunos", "PUT")]
 	public class UpdateAluno
 	{
 		public Core.Model.Aluno Aluno { get; set; }

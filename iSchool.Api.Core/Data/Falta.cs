@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Faltas.ToList();
 		}
+
+		public override void Update(Model.Falta entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Boletins.Include("Aluno").Include("Notas").Include("Faltas").ToList();
 		}
+
+		public override void Update(Model.Boletim entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

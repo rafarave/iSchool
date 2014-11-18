@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Educandos.ToList();
 		}
+
+		public override void Update(Model.Educando entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace iSchool.Api.Core.Data
 {
-public	class Aula: DataAccessBase<Model.Aula>
+	public class Aula : DataAccessBase<Model.Aula>
 	{
 		public override System.Data.Entity.Infrastructure.DbEntityEntry GetCurrent(Model.Aula entity)
 		{
@@ -22,6 +22,11 @@ public	class Aula: DataAccessBase<Model.Aula>
 		protected override List<Model.Aula> GetCollection()
 		{
 			return context.Aulas.Include("Ausencias").Include("Cadeira").ToList();
+		}
+
+		public override void Update(Model.Aula entity)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

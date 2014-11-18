@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Avaliacoes.Include("Notas").Include("Cadeira").Include("Periodo").ToList();
 		}
+
+		public override void Update(Model.Avaliacao entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

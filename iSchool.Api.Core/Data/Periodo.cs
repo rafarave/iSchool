@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Periodos.ToList();
 		}
+
+		public override void Update(Model.Periodo entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

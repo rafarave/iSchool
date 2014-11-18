@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Matriculas.ToList();
 		}
+
+		public override void Update(Model.Matricula entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

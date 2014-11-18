@@ -18,6 +18,12 @@ namespace iSchool.Api.Core.Data
 			context.Alunos.Add(entity);
 			context.SaveChanges();
 		}
+		public override void Update(Model.Aluno entity)
+		{
+			Model.Aluno original = context.Alunos.Find(entity.Id);
+			context.Entry(original).CurrentValues.SetValues(entity);
+			context.SaveChanges();
+		}
 
 		protected override List<Model.Aluno> GetCollection()
 		{
@@ -43,5 +49,6 @@ namespace iSchool.Api.Core.Data
 				).OrderBy(a => a.AulasAtendidas.OrderBy(au => au.OrdemChamada)).ToList();
 			return alunos;
 		}
+
 	}
 }

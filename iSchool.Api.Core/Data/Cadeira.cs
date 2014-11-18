@@ -36,5 +36,10 @@ namespace iSchool.Api.Core.Data
 				.ToList();
 			return cadeiras;
 		}
+
+		public override void Update(Model.Cadeira entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

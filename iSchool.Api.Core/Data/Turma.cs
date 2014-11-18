@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Turmas.ToList();
 		}
+
+		public override void Update(Model.Turma entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

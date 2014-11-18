@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Planejamentos.ToList();
 		}
+
+		public override void Update(Model.Planejamento entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

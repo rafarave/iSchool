@@ -23,5 +23,10 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Responsaveis.Include("Alunos").ToList();
 		}
+
+		public override void Update(Model.Responsavel entity)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
