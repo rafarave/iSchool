@@ -19,14 +19,6 @@ namespace iSchool.Api.ServiceModel
 	{
 	}
 
-	[Route("/alunos", "GET")]
-	public class FilterAlunos : IReturn<List<Core.Model.Aluno>>
-	{
-		public string nome { get; set; }
-		public int turmaId { get; set; }
-		public int responsavelId { get; set; }
-	}
-
 	[Route("/alunos", "POST")]
 	public class NewAluno
 	{
@@ -44,4 +36,5 @@ namespace iSchool.Api.ServiceModel
 	{
 		public int Id { get; set; }
 	}
+
 }

@@ -29,6 +29,22 @@ namespace iSchool.Api.Core.Data
 		{
 			return context.Cadeiras.ToList();
 		}
-
+		public Model.Cadeira GetCabecalhoListaChamada(int cadeiraId, int periodoId)
+		{
+			Model.Cadeira cadeira = context.Cadeiras.Include("Aulas").Include("Avaliacoes").FirstOrDefault(c => c.Id == cadeiraId);
+			cadeira.Aulas = cadeira.Aulas.Where(a => a.PeriodoId == periodoId).ToList();
+			cadeira.Avaliacoes = cadeira.Avaliacoes.Where(a => a.PeriodoId == periodoId).ToList();
+			return cadeira;
+		}
+		public Model.Cadeira GetListaChamada(int cadeiraId, int periodoId)
+		{
+			Model.Cadeira cadeira = context.Cadeiras.Include("Aulas").Include("Aulas.Ausencias")
+				.Include("Avaliacoes").Include("Avaliacoes.Notas")
+				.Include("Alunos").Include("Alunos.Aluno")
+				.FirstOrDefault(c => c.Id == cadeiraId);
+			cadeira.Aulas = cadeira.Aulas.Where(a => a.PeriodoId == periodoId).ToList();
+			cadeira.Avaliacoes = cadeira.Avaliacoes.Where(a => a.PeriodoId == periodoId).ToList();
+			return cadeira;
+		}
 	}
 }

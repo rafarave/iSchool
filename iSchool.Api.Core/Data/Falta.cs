@@ -30,5 +30,13 @@ namespace iSchool.Api.Core.Data
 			return context.Faltas.ToList();
 		}
 
+		public void AtribuiFalta(int EducandoId, int AulaId)
+		{
+			Model.Falta falta = new Model.Falta();
+			falta.AulaId = AulaId;
+			falta.EducandoId = EducandoId;
+			context.Faltas.Add(falta);
+			context.SaveChanges();
+		}
 	}
 }

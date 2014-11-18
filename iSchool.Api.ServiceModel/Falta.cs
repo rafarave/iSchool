@@ -36,4 +36,11 @@ namespace iSchool.Api.ServiceModel
 	{
 		public int Id { get; set; }
 	}
+
+	[Route("/alunos/", "GET")]
+	public class AtribuirFalta
+	{
+		public int EducandoId { get; set; }
+		public int AulaId { get; set; }
+	}
 }

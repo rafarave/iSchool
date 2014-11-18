@@ -38,5 +38,10 @@ namespace iSchool.Api.ServiceInterface
 			new data.Falta().Delete(request.Id);
 			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
+		public HttpResult Get(AtribuirFalta request)
+		{
+			new data.Falta().AtribuiFalta(request.EducandoId, request.AulaId);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
+		}
 	}
 }

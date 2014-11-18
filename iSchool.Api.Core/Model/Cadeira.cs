@@ -15,11 +15,10 @@ namespace iSchool.Api.Core.Model
 		public Disciplina Disciplina { get; set; }
 		public int ProfessorId { get; set; }
 		public Professor Professor { get; set; }
-		public Planejamento Planejamento { get; set; }
+		public List<Planejamento> Planejamentos { get; set; }
 		public List<Educando> Alunos { get; set; }
 		public List<Aula> Aulas { get; set; }
 		public List<Avaliacao> Avaliacoes { get; set; }
-		public int DiaSemana { get; set; }
-		public int Ordem { get; set; }
+		public List<ConfiguracaoCadeira> Configuracoes { get; set; }
 	}
 }

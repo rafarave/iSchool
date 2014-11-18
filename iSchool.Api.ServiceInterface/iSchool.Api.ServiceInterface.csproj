@@ -70,6 +70,7 @@
     <Compile Include="Boletim.cs" />
     <Compile Include="Cadeira.cs" />
     <Compile Include="Comunicado.cs" />
+    <Compile Include="ConfiguracaoCadeira.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Educando.cs" />
     <Compile Include="Falta.cs" />

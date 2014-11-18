@@ -15,5 +15,6 @@ namespace iSchool.Api.Core.Model
 		public int PeriodoId { get; set; }
 		public Periodo Periodo { get; set; }
 		public List<Nota> Notas { get; set; }
+		public DateTime Aplicada { get; set; }
 	}
 }

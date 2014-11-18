@@ -38,5 +38,47 @@ namespace iSchool.Api.ServiceInterface
 			new data.Cadeira().Delete(request.Id);
 			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
+		public CabecalhoListaChamada Get(GetCabecalhoListaChamada request)
+		{
+			model.Cadeira cadeira =
+				new data.Cadeira().GetCabecalhoListaChamada(request.CadeiraId, request.PeriodoId);
+			cadeira.Aulas = cadeira.Aulas.OrderBy(a => a.Data).ToList();
+			cadeira.Avaliacoes = cadeira.Avaliacoes.OrderBy(a => a.Aplicada).ToList();
+			CabecalhoListaChamada cabecalho = new CabecalhoListaChamada();
+			foreach (model.Aula aula in cadeira.Aulas)
+				cabecalho.AulasDadas.Add(aula.Id, aula.Data);
+			foreach (model.Avaliacao avaliacao in cadeira.Avaliacoes)
+				cabecalho.Avaliacoes.Add(avaliacao.Id, avaliacao.Nome);
+			return cabecalho;
+		}
+		public List<ItemListaChamada> Get(GetListaChamada request)
+		{
+			model.Cadeira cadeira =
+				new data.Cadeira().GetListaChamada(request.CadeiraId, request.PeriodoId);
+			cadeira.Aulas = cadeira.Aulas.OrderBy(a => a.Data).ToList();
+			cadeira.Avaliacoes = cadeira.Avaliacoes.OrderBy(a => a.Aplicada).ToList();
+			List<ItemListaChamada> listaChamada = new List<ItemListaChamada>();
+			foreach(model.Educando aluno in cadeira.Alunos)
+			{
+				ItemListaChamada itemChamada = new ItemListaChamada();
+				itemChamada.CadeiraId = cadeira.Id;
+				itemChamada.EducandoId = aluno.Id;
+				itemChamada.NomeAluno = aluno.Aluno.Nome;
+				itemChamada.NumeroChamadaAluno = aluno.OrdemChamada;
+				foreach(model.Aula aula in cadeira.Aulas)
+				{
+					itemChamada.Presencas.Add(aula.Id, aula.Ausencias.Where(f => f.EducandoId == aluno.Id).Count() <= 0);
+				}
+				foreach(model.Avaliacao avaliacao in cadeira.Avaliacoes)
+				{
+					itemChamada.Avaliacoes.Add(avaliacao.Id,
+						avaliacao.Notas.Where(n => n.EducandoId == aluno.Id).Count() > 0 ?
+						avaliacao.Notas.FirstOrDefault(n => n.EducandoId == aluno.Id).Valor : (decimal)0
+						);
+				}
+				listaChamada.Add(itemChamada);
+			}
+			return listaChamada;
+		}
 	}
 }

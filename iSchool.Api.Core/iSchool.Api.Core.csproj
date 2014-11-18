@@ -52,6 +52,7 @@
     <Compile Include="Data\Boletim.cs" />
     <Compile Include="Data\Cadeira.cs" />
     <Compile Include="Data\Comunicado.cs" />
+    <Compile Include="Data\ConfiguracaoCadeira.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\DataAccessBase.cs" />
     <Compile Include="Data\Disciplina.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Model\Boletim.cs" />
     <Compile Include="Model\Cadeira.cs" />
     <Compile Include="Model\Comunicado.cs" />
+    <Compile Include="Model\ConfiguracaoCadeira.cs" />
     <Compile Include="Model\Disciplina.cs" />
     <Compile Include="Model\Educando.cs" />
     <Compile Include="Model\Falta.cs" />

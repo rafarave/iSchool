@@ -15,6 +15,7 @@ namespace iSchool.Api.Core.Data
 		public DbSet<Model.Avaliacao> Avaliacoes { get; set; }
 		public DbSet<Model.Boletim> Boletins { get; set; }
 		public DbSet<Model.Cadeira> Cadeiras { get; set; }
+		public DbSet<Model.ConfiguracaoCadeira> ConfiguracoesCadeira { get; set; }
 		public DbSet<Model.Comunicado> Comunicados { get; set; }
 		public DbSet<Model.Disciplina> Disciplinas { get; set; }
 		public DbSet<Model.Educando> Educandos { get; set; }
