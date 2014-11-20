@@ -307,12 +307,19 @@
 				<!-- /.search form -->
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
-					<li class="active">
-						<a href="#/alunos">
-							<i class="fa fa-graduation-cap"></i> <span>Alunos</span>
+					<li class="treeview">
+						<a>
+							<i class="fa fa-graduation-cap"></i>
+							<span>Alunos</span>
+							<i class="fa fa-angle-left pull-right"></i>
 						</a>
+						<ul class="treeview-menu">
+							<li><a href="#/alunos"><i class="fa fa-angle-right"></i> Pesquisar</a></li>
+							<li><a href="#/alunos/novo"><i class="fa fa-angle-right"></i> Novo Aluno</a></li>
+							<li><a href="#/alunos/responsavel"><i class="fa fa-angle-right"></i> Responsável</a></li>
+						</ul>
 					</li>
-					<li>
+					<!--<li>
 						<a href="#">
 							<i class="fa fa-th"></i> <span>item 2</span>
 						</a>
@@ -342,7 +349,7 @@
 							<li><a href="#"><i class="fa fa-angle-right"></i> sub-item 4</a></li>
 							<li><a href="#"><i class="fa fa-angle-right"></i> sub-item 5</a></li>
 						</ul>
-					</li>
+					</li>-->
 				</ul>
 			</section>
 			<!-- /.sidebar -->
@@ -397,6 +404,8 @@
 	<script src="app/js/controllers/mainController.js"></script>
 	<script src="app/js/controllers/inicioController.js"></script>
 	<script src="app/js/controllers/alunosController.js"></script>
+	<script src="app/js/controllers/formAlunoController.js"></script>
+	<script src="app/js/controllers/responsavelController.js"></script>
 
 </body>
 
