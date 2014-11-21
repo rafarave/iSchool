@@ -33,13 +33,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="aluno in alunos">
+				<tr ng-repeat-start="aluno in alunos">
 					<td>{{ aluno.Nome }}</td>
 					<td>{{ aluno.Email }}</td>
 					<td>{{ aluno.AprovadoUltimoPeriodo }}</td>
 					<td>{{ aluno.Nascimento | momentParseDateASPNetJSON }}</td>
 					<td>{{ aluno.Numero }}</td>
 					<td>{{ aluno.CEP }}</td>
+				</tr>
+				<tr ng-repeat-end>
+					<td colspan="6">
+						<!--TODO: layout under construction-->
+						<div>
+							<a href="#/alunos/edit/{{ aluno.Id }}" class="btn btn-primary">Editar</a>
+							<button type="button" class="btn btn-danger" ng-click="excluiAluno(aluno.Id)">Excluir</button>
+							<button type="button" class="btn btn-info">outra ação X</button>
+							<button type="button" class="btn btn-info">outra ação Y</button>
+						</div>
+					</td>
 				</tr>
 			</tbody>
 		</table>

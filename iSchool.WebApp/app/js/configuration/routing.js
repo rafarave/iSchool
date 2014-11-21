@@ -9,7 +9,7 @@ angular.module('iSchoolApp')
 	$routeProvider.when('/comunicados', { templateUrl: 'app/partials/comunicados.html', controller: 'comunicadosController' });
 	$routeProvider.when('/alunos', { templateUrl: 'app/partials/alunos.html', controller: 'alunosController' });
 	$routeProvider.when('/alunos/novo', { templateUrl: 'app/partials/formAluno.html', controller: 'formAlunoController' });
-	$routeProvider.when('/alunos/edit', { templateUrl: 'app/partials/formAluno.html', controller: 'formAlunoController' });
+	$routeProvider.when('/alunos/edit/:id', { templateUrl: 'app/partials/formAluno.html', controller: 'formAlunoController' });
 	$routeProvider.when('/alunos/responsavel', { templateUrl: 'app/partials/responsavel.html', controller: 'responsavelController' });
 	//$routeProvider.when('/aluno/:id', { templateUrl: 'app/partials/alunos.html', controller: 'alunosController' });//
 

@@ -1,42 +1,38 @@
 ﻿
 angular.module('iSchoolApp.controllers')
 
-.controller('formAlunoController', function ($scope, $route, $location, alunosService, toaster) {
+.controller('formAlunoController', function ($scope, $route, $routeParams, $location, alunosService, toaster, $filter) {
 
-	$scope.modoForm = "Editar";
+	$scope.alunoEntity = { Aluno: {}};
+
 	if ($location.path() == "/alunos/novo")
 		$scope.modoForm = "Novo";
+	else {
+		$scope.modoForm = "Editar";
+		alunosService.getAluno($routeParams.id).success(function (data) {
+			$scope.alunoEntity.Aluno = data;
+			$scope.alunoEntity.Aluno.Nascimento = $filter('momentParseDateASPNetJSON')(data.Nascimento);
+		});
+	}
 
+	//TODO: validar campos e remover toaster
 	$scope.salvaAluno = function () {
-		var aluno = {
-			Aluno: {
-				Nome: $scope.modelNome,
-				Nascimento: $scope.modelNascimento,
-				Email: $scope.modelEmail,
-				Endereco: $scope.modelEndereco,
-				Numero: $scope.modelNumero,
-				Complemento: $scope.modelComplemento,
-				CEP: $scope.modelCEP,
-				Cidade: $scope.modelCidade,
-				Estado: $scope.modelEstado
-			}
-		};
-
 		if ($scope.modoForm == "Novo") {
-			alunosService.postAluno(aluno).success(function (data) {
+			alunosService.postAluno($scope.alunoEntity).success(function (data) {
 				toaster.pop('success', "Sucesso!", "Aluno criado com sucesso!");
 				$location.path("/alunos");
 			});
 		}
 		else {
-			alunosService.putAluno(aluno).success(function (data) {
+			alunosService.putAluno($scope.alunoEntity).success(function (data) {
 				toaster.pop('success', "Sucesso!", "Aluno modificado com sucesso!");
 				$location.path("/alunos");
 			});
 		}
-
+		toaster.pop('success', "Sucesso!", "Aluno criado com sucesso!");
 	};
 
+	//TODO: decidir se volta pra tela de pesquisa ou se soh limpa os campos
 	$scope.cancela = function () {
 		$route.reload();
 	};
