@@ -36,4 +36,11 @@ namespace iSchool.Api.ServiceModel
 	{
 		public int Id { get; set; }
 	}
+	[Route("/aulas/dar_aula", "GET")]
+	public class CreateAula
+	{
+		public int CadeiraId { get; set; }
+		public int PeriodoId { get; set; }
+		public DateTime Data { get; set; }
+	}
 }

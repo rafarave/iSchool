@@ -36,4 +36,11 @@ namespace iSchool.Api.ServiceModel
 	{
 		public int Id { get; set; }
 	}
+	[Route("/notas/avaliar_aluno", "GET")]
+	public class SetNota
+	{
+		public int EducandoId { get; set; }
+		public int AvaliacaoId { get; set; }
+		public decimal Valor { get; set; }
+	}
 }

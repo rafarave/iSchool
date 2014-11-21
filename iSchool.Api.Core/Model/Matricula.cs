@@ -10,5 +10,7 @@ namespace iSchool.Api.Core.Model
 	{
 		public int InstituicaoId { get; set; }
 		public int Id { get; set; }
+		public string Codigo { get; set; }
+		public string Hash { get; set; }
 	}
 }

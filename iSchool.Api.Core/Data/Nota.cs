@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,5 +31,16 @@ namespace iSchool.Api.Core.Data
 			return context.Notas.ToList();
 		}
 
+
+		public void AvaliarAluno(int educandoId, int avaliacaoId, decimal valor)
+		{
+			bool exists = context.Notas.Where(n => n.EducandoId == educandoId && n.AvaliacaoId == avaliacaoId).Count() > 0;
+			Model.Nota nota = exists ? context.Notas.FirstOrDefault(n => n.EducandoId == educandoId && n.AvaliacaoId == avaliacaoId) : new Model.Nota();
+			nota.EducandoId = educandoId;
+			nota.AvaliacaoId = avaliacaoId;
+			nota.Valor = valor;
+			context.Entry(nota).State = exists ? EntityState.Modified : EntityState.Added;
+			context.SaveChanges();
+		}
 	}
 }

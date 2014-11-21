@@ -57,7 +57,7 @@ namespace iSchool.Api.ServiceModel
 		public Dictionary<int, string> Avaliacoes { get; set; }
 	}
 
-	[Route("/cadeiras/lista}", "GET")]
+	[Route("/cadeiras/lista", "GET")]
 	public class GetListaChamada
 	{
 		public int CadeiraId { get; set; }

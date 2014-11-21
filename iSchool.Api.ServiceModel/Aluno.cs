@@ -15,9 +15,7 @@ namespace iSchool.Api.ServiceModel
 	}
 
 	[Route("/alunos", "GET")]
-	public class GetAlunos : IReturn<List<Core.Model.Aluno>>
-	{
-	}
+	public class GetAlunos : IReturn<List<Core.Model.Aluno>> { }
 
 	[Route("/alunos", "POST")]
 	public class NewAluno
@@ -36,5 +34,6 @@ namespace iSchool.Api.ServiceModel
 	{
 		public int Id { get; set; }
 	}
-
+	[Route("/alunos/backup", "GET")]
+	public class MakeFileAluno { }
 }

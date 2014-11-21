@@ -85,6 +85,17 @@ namespace iSchool.Api.Core.Data
 			context.SaveChanges();
 
 			context.Turmas.Add(new Model.Turma { Nome = "1ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "2ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "3ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "4ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "5ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "6ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "7ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "8ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "9ª Série Fundamental" });
+			context.Turmas.Add(new Model.Turma { Nome = "1ª Série Médio" });
+			context.Turmas.Add(new Model.Turma { Nome = "2ª Série Médio" });
+			context.Turmas.Add(new Model.Turma { Nome = "3ª Série Médio" });
 			context.SaveChanges();
 
 			Model.Cadeira lp = new Model.Cadeira

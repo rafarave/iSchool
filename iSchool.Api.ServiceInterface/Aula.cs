@@ -38,5 +38,14 @@ namespace iSchool.Api.ServiceInterface
 			new data.Aula().Delete(request.Id);
 			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
+		public HttpResult Get(CreateAula request)
+		{
+			new data.Aula().Insert(new model.Aula {
+				CadeiraId = request.CadeiraId, 
+				PeriodoId = request.PeriodoId ,
+				Data = request.Data
+			});
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
+		}
 	}
 }

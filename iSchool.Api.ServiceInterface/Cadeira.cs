@@ -45,8 +45,10 @@ namespace iSchool.Api.ServiceInterface
 			cadeira.Aulas = cadeira.Aulas.OrderBy(a => a.Data).ToList();
 			cadeira.Avaliacoes = cadeira.Avaliacoes.OrderBy(a => a.Aplicada).ToList();
 			CabecalhoListaChamada cabecalho = new CabecalhoListaChamada();
+			cabecalho.AulasDadas = new Dictionary<int, DateTime>();
 			foreach (model.Aula aula in cadeira.Aulas)
 				cabecalho.AulasDadas.Add(aula.Id, aula.Data);
+			cabecalho.Avaliacoes = new Dictionary<int, string>();
 			foreach (model.Avaliacao avaliacao in cadeira.Avaliacoes)
 				cabecalho.Avaliacoes.Add(avaliacao.Id, avaliacao.Nome);
 			return cabecalho;
@@ -65,10 +67,12 @@ namespace iSchool.Api.ServiceInterface
 				itemChamada.EducandoId = aluno.Id;
 				itemChamada.NomeAluno = aluno.Aluno.Nome;
 				itemChamada.NumeroChamadaAluno = aluno.OrdemChamada;
+				itemChamada.Presencas = new Dictionary<int, bool>();
 				foreach(model.Aula aula in cadeira.Aulas)
 				{
 					itemChamada.Presencas.Add(aula.Id, aula.Ausencias.Where(f => f.EducandoId == aluno.Id).Count() <= 0);
 				}
+				itemChamada.Avaliacoes = new Dictionary<int, decimal>();
 				foreach(model.Avaliacao avaliacao in cadeira.Avaliacoes)
 				{
 					itemChamada.Avaliacoes.Add(avaliacao.Id,

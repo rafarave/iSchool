@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,13 +31,15 @@ namespace iSchool.Api.Core.Data
 			return context.Faltas.ToList();
 		}
 
-		public void AtribuiFalta(int EducandoId, int AulaId)
+		public bool AtribuirFalta(int EducandoId, int AulaId)
 		{
-			Model.Falta falta = new Model.Falta();
+			bool exists = context.Faltas.Where(f => f.EducandoId == EducandoId && f.AulaId == AulaId).Count() > 0;
+			Model.Falta falta = exists ? context.Faltas.FirstOrDefault(f => f.EducandoId == EducandoId && f.AulaId == AulaId) : new Model.Falta();
 			falta.AulaId = AulaId;
 			falta.EducandoId = EducandoId;
-			context.Faltas.Add(falta);
+			context.Entry(falta).State = exists ? EntityState.Deleted : EntityState.Added;
 			context.SaveChanges();
+			return !exists;
 		}
 	}
 }

@@ -38,5 +38,10 @@ namespace iSchool.Api.ServiceInterface
 			new data.Nota().Delete(request.Id);
 			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
+		public HttpResult Get(SetNota request)
+		{
+			new data.Nota().AvaliarAluno(request.EducandoId, request.AvaliacaoId, request.Valor);
+			return new HttpResult(request, System.Net.HttpStatusCode.OK);
+		}
 	}
 }
