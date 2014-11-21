@@ -29,7 +29,7 @@ angular.module('iSchoolApp.services')
 
 	this.postAluno = function(aluno) {
 		return $http.post("../api/alunos", aluno, {
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+			headers: { 'Content-Type': 'application/json' }
 		}).success(function (data) {
 			return data;
 		}).error(function (data) { });

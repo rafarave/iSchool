@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\css\toaster.css" />
     <Content Include="app\js\configuration\app.js" />
     <Content Include="app\js\configuration\routing.js" />
     <Content Include="app\js\controllers\formAlunoController.js" />
@@ -69,6 +70,7 @@
     <Content Include="app\js\filters\momentFilter.js" />
     <Content Include="app\js\services\httpRequestInterceptor.js" />
     <Content Include="app\js\services\alunosService.js" />
+    <Content Include="app\js\services\toaster.js" />
     <Content Include="app\partials\400.html" />
     <Content Include="app\partials\404.html" />
     <Content Include="app\partials\500.html" />
@@ -1212,7 +1214,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\css\" />
     <Folder Include="app\js\directives\" />
   </ItemGroup>
   <PropertyGroup>

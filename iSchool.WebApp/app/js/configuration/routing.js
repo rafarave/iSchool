@@ -3,6 +3,8 @@ angular.module('iSchoolApp')
 
 .config(['$routeProvider', '$httpProvider', '$locationProvider', function ($routeProvider, $httpProvider, $locationProvider) {
 
+	$httpProvider.interceptors.push('httpRequestInterceptor');
+
 	$routeProvider.when('/inicio', { templateUrl: 'app/partials/inicio.html', controller: 'inicioController' });
 	$routeProvider.when('/comunicados', { templateUrl: 'app/partials/comunicados.html', controller: 'comunicadosController' });
 	$routeProvider.when('/alunos', { templateUrl: 'app/partials/alunos.html', controller: 'alunosController' });
