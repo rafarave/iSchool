@@ -19,28 +19,14 @@ namespace iSchool.Api.Core.Model
 		public List<Mensalidade> Mensalidade { get; set; }
 		public List<Ocorrencia> Ocorrencias { get; set; }
 		public Boletim Boletim { get; set; }
-
-	//}
-	//public class DadosCadastrais
-	//{
-	//	public int alunoId { get; set; }
-	//	public Aluno Aluno { get; set; }
+		public Matricula Matricula { get; set; }
 		public string Nome { get; set; }
-		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-		[Display(Name = "Data de nascimento")]
 		public DateTime Nascimento { get; set; }
-		[Display(Name = "Número de matrícula")]
-		public string Matricula { get; set; }
-		[Display(Name = "Endereço")]
 		public string Endereco { get; set; }
-		[Range(0, 99000)]
-		[Display(Name = "Número")]
 		public short Numero { get; set; }
 		public string Complemento { get; set; }
 		public string Cidade { get; set; }
 		public string Estado { get; set; }
-
-		[DisplayFormat(DataFormatString = "{0:F8}")]
 		public int CEP { get; set; }
 	}
 }

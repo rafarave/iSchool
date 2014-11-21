@@ -15,7 +15,7 @@ namespace iSchool.Api.Core.Data
 
 		public override void Insert(Model.Aluno entity)
 		{
-			//entity.Matricula = new Model.Matricula();
+			entity.Matricula = new Model.Matricula(DateTime.Now);
 			context.Alunos.Add(entity);
 			context.SaveChanges();
 		}
