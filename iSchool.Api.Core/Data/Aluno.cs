@@ -42,12 +42,13 @@ namespace iSchool.Api.Core.Data
 				).ToList();
 		}
 
-		public List<Model.Aluno> GetLista(int professorId, int cadeiraId)
+		public List<Model.Aluno> GetLista(string nome, string codigo)
 		{
-			List<Model.Aluno> alunos = context.Alunos.Include("Responsaveis").Include("AulasAtendidas").Include("AulasAtendidas.Aulas")
-				.Include("AulasAtendidas.Aulas.Aulas").Include("AulasAtendidas.Aulas.Aulas.Ausencias").Include("AulasAtendidas.Aulas.Aulas.Avaliacoes").Include("AulasAtendidas.Aulas.Aulas.Notas").Where(a =>
-				(a.AulasAtendidas.Where(aa => aa.Aulas.Where(au=> au.ProfessorId == professorId && au.Id == cadeiraId).Count() > 0).Count() > 0)
-				).OrderBy(a => a.AulasAtendidas.OrderBy(au => au.OrdemChamada)).ToList();
+			List<Model.Aluno> alunos = context.Alunos.Include("Matricula").ToList();
+			alunos = alunos.Where(a =>
+				(a.Nome.ToLower().IndexOf(nome.ToLower()) >= 0 || nome.Length <= 3)
+				&& ((a.Matricula != null && a.Matricula.Codigo.ToLower().IndexOf(codigo.ToLower()) >= 0 )|| codigo.Length <= 3)
+				).OrderBy(a => a.Nome).ToList();
 			return alunos;
 		}
 

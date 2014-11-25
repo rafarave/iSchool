@@ -38,5 +38,11 @@ namespace iSchool.Api.ServiceInterface
 			new data.Aluno().Delete(request.Id);
 			return new HttpResult(request, System.Net.HttpStatusCode.OK);
 		}
+		public List<model.Aluno> Get(FilterAlunos request)
+		{
+			if (request.Nome == null) request.Nome = string.Empty;
+			if (request.Codigo == null) request.Codigo = string.Empty;
+			return new data.Aluno().GetLista(request.Nome, request.Codigo);
+		}
 	}
 }

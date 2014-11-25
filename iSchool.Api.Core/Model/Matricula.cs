@@ -8,6 +8,7 @@ namespace iSchool.Api.Core.Model
 {
 	public class Matricula : IEntityBase
 	{
+		public Matricula() { }
 		public Matricula(DateTime data)
 		{
 			this.Hash = string.Empty;

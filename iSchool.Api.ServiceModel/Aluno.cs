@@ -36,4 +36,11 @@ namespace iSchool.Api.ServiceModel
 	}
 	[Route("/alunos/backup", "GET")]
 	public class MakeFileAluno { }
+
+	[Route("/alunos/filter", "GET")]
+	public class FilterAlunos : IReturn<List<Core.Model.Aluno>>
+	{
+		public string Nome { get; set; }
+		public string  Codigo { get; set; }
+	}
 }
