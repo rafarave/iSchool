@@ -4,19 +4,26 @@
 </section>
 
 <section class="content">
+	<toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
 	<div>
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="box-title">Filtro</h3>
+				<h3 class="box-title">Filtros</h3>
 			</div>
 			<div class="box-body">
-				<div class="form-group">
-					<label>Matrícula</label>
-					<input type="text" class="form-control" placeholder="Matrícula">
+				<div class="row">
+					<div class="form-group col-xs-8">
+						<label>Nome</label>
+						<input type="text" class="form-control" ng-model="nomeSearch" placeholder="Nome">
+					</div>
+					<div class="form-group col-xs-4">
+						<label>Matrícula</label>
+						<input type="text" class="form-control" ng-model="matriculaSearch" placeholder="Matrícula">
+					</div>
 				</div>
 			</div>
 			<div class="box-footer">
-				<button type="button" class="btn btn-info">Encontrar</button>
+				<button type="button" class="btn btn-info" ng-click="buscaAluno(matriculaSearch)">Encontrar</button>
 			</div>
 		</div>
 	</div>
@@ -24,33 +31,32 @@
 		<table class="table table-responsive table-striped">
 			<thead>
 				<tr>
+					<th>Matrícula cod</th>
+					<th>Matrícula hash</th>
 					<th>Nome</th>
 					<th>E-mail</th>
 					<th>Aprovado</th>
 					<th>Data de Nascimento</th>
 					<th>Número</th>
 					<th>CEP</th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat-start="aluno in alunos">
+				<tr ng-repeat="aluno in alunos">
+					<td>{{ aluno.Matricula.Codigo }}</td>
+					<td>{{ aluno.Matricula.Hash }}</td>
 					<td>{{ aluno.Nome }}</td>
 					<td>{{ aluno.Email }}</td>
 					<td>{{ aluno.AprovadoUltimoPeriodo }}</td>
 					<td>{{ aluno.Nascimento | momentParseDateASPNetJSON }}</td>
 					<td>{{ aluno.Numero }}</td>
 					<td>{{ aluno.CEP }}</td>
-				</tr>
-				<tr ng-repeat-end>
-					<td colspan="6">
-						<!--TODO: layout under construction-->
-						<div>
-							<a href="#/alunos/edit/{{ aluno.Id }}" class="btn btn-primary">Editar</a>
-							<button type="button" class="btn btn-danger" ng-click="excluiAluno(aluno.Id)">Excluir</button>
-							<button type="button" class="btn btn-info">outra ação X</button>
-							<button type="button" class="btn btn-info">outra ação Y</button>
-						</div>
-					</td>
+					<td><a href="#/alunos/responsavel/{{ aluno.Id }}" class="btn btn-warning">Responsável</a></td>
+					<td><a href="#/alunos/edit/{{ aluno.Id }}" class="btn btn-primary">Editar</a></td>
+					<td><button type="button" class="btn btn-danger" ng-click="excluiAluno(aluno.Id)">Excluir</button></td>
 				</tr>
 			</tbody>
 		</table>

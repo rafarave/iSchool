@@ -70,6 +70,7 @@
     <Content Include="app\js\filters\momentFilter.js" />
     <Content Include="app\js\services\httpRequestInterceptor.js" />
     <Content Include="app\js\services\alunosService.js" />
+    <Content Include="app\js\services\responsavelService.js" />
     <Content Include="app\js\services\toaster.js" />
     <Content Include="app\partials\400.html" />
     <Content Include="app\partials\404.html" />

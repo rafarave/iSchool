@@ -3,7 +3,7 @@ angular.module('iSchoolApp.controllers')
 
 .controller('formAlunoController', function ($scope, $route, $routeParams, $location, alunosService, toaster, $filter) {
 
-	$scope.alunoEntity = { Aluno: {}};
+	$scope.alunoEntity = { Aluno: {} };
 
 	if ($location.path() == "/alunos/novo")
 		$scope.modoForm = "Novo";

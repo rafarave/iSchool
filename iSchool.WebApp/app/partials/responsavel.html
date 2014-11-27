@@ -1,21 +1,22 @@
 ﻿
 <section class="content-header">
-	<h1>Responsável</h1>
+	<h1>Responsável <small>Gerenciar os responsáveis pelo aluno</small></h1>
 </section>
 
 <section class="content">
 	<div class="box box-primary">
 		<div class="box-header">
-			<h3 class="box-title">Filtro</h3>
+			<h3 class="box-title">{{ alunoEntity.Aluno.Nome }} - {{ alunoEntity.Aluno.Matricula.Hash }}</h3>
 		</div>
 		<div class="box-body">
 			<div class="form-group">
-				<label>Matrícula</label>
-				<input type="text" class="form-control" placeholder="Matrícula">
+				{{ alunoEntity.Aluno.Nascimento }}
 			</div>
-		</div>
-		<div class="box-footer">
-			<button type="button" class="btn btn-info">Encontrar</button>
+			<div class="form-group">
+				{{ alunoEntity.Aluno.Email }}
+			</div>
+			<div class="form-group">
+			</div>
 		</div>
 	</div>
 	<div class="box box-warning">
@@ -31,39 +32,38 @@
 				<label>E-mail</label>
 				<input type="text" class="form-control" placeholder="E-mail">
 			</div>
-			<label>Parentesco</label>
-			<div class="input-group input-group-sm">
+			<div class="form-group">
+				<label>Parentesco</label>
 				<input type="text" class="form-control" placeholder="Parentesco">
-				<span class="input-group-btn">
-					<button class="btn btn-success btn-flat" type="button">Adicionar</button>
-				</span>
 			</div>
 		</div>
-		<div class="box-footer">
-			<table class="table table-responsive table-condensed">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>E-mail</th>
-						<th>Parentesco</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Jonas</td>
-						<td>Jonas@pai.com</td>
-						<td>pai</td>
-						<td><button type="button" class="btn btn-sm btn-danger">Remover</button></td>
-					</tr>
-					<tr>
-						<td>Madalena</td>
-						<td>Madalena@mae.com</td>
-						<td>mãe</td>
-						<td><button type="button" class="btn btn-sm btn-danger">Remover</button></td>
-					</tr>
-				</tbody>
-			</table>
+	</div>
+	<div class="box box-solid">
+		<div class="pull-right">
+			<button class="btn btn-success" type="button" ng-click="salvaResponsavel()">Adicionar</button>
 		</div>
 	</div>
+	<table class="table table-responsive table-condensed">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Parentesco</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-hide="responsaveis.length == 0" ng-repeat="responsavel in responsaveis">
+				<td>{{ responsavel.Nome }}</td>
+				<td>{{ responsavel.Email }}</td>
+				<td>{{ responsavel.Parentesco }}</td>
+				<td>
+					<div class="pull-right">
+						<button type="button" class="btn btn-sm btn-danger" ng-click="excluiResponsavel(responsavel.Id)">Excluir</button>
+					</div>
+				</td>
+			</tr>
+			<tr ng-show="responsaveis.length == 0"><td>Não há responsáveis cadastrados.</td></tr>
+		</tbody>
+	</table>
 </section>
