@@ -26,16 +26,16 @@
 		<div class="box-body">
 			<div class="form-group">
 				<label>Nome Completo</label>
-				<input type="text" class="form-control" placeholder="Nome Completo">
+				<input type="text" class="form-control" ng-model="txtModel" placeholder="Nome Completo">
 			</div>
 			<div class="form-group">
 				<label>E-mail</label>
-				<input type="text" class="form-control" placeholder="E-mail">
+				<input type="text" class="form-control" ng-model="txtEmail" placeholder="E-mail">
 			</div>
-			<div class="form-group">
+			<!--<div class="form-group">
 				<label>Parentesco</label>
 				<input type="text" class="form-control" placeholder="Parentesco">
-			</div>
+			</div>-->
 		</div>
 	</div>
 	<div class="box box-solid">
@@ -48,7 +48,7 @@
 			<tr>
 				<th>Nome</th>
 				<th>E-mail</th>
-				<th>Parentesco</th>
+				<!--<th>Parentesco</th>-->
 				<th></th>
 			</tr>
 		</thead>
@@ -56,7 +56,7 @@
 			<tr ng-hide="responsaveis.length == 0" ng-repeat="responsavel in responsaveis">
 				<td>{{ responsavel.Nome }}</td>
 				<td>{{ responsavel.Email }}</td>
-				<td>{{ responsavel.Parentesco }}</td>
+				<!--<td>{{ responsavel.Parentesco }}</td>-->
 				<td>
 					<div class="pull-right">
 						<button type="button" class="btn btn-sm btn-danger" ng-click="excluiResponsavel(responsavel.Id)">Excluir</button>
