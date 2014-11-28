@@ -23,6 +23,13 @@ namespace iSchool.Api.ServiceInterface
 		{
 			return new data.Aluno().GetCollection(0);
 		}
+		public List<model.Aluno> Get(FilterAlunos request)
+		{
+			if (request.Nome == null) request.Nome = string.Empty;
+			if (request.Codigo == null) request.Codigo = string.Empty;
+			return new data.Aluno().GetLista(request.Nome, request.Codigo);
+		}
+		//TODO: retornar o id gerado
 		public HttpResult Post(NewAluno request)
 		{
 			new data.Aluno().Insert(request.Aluno);
@@ -37,12 +44,6 @@ namespace iSchool.Api.ServiceInterface
 		{
 			new data.Aluno().Delete(request.Id);
 			return new HttpResult(request, System.Net.HttpStatusCode.OK);
-		}
-		public List<model.Aluno> Get(FilterAlunos request)
-		{
-			if (request.Nome == null) request.Nome = string.Empty;
-			if (request.Codigo == null) request.Codigo = string.Empty;
-			return new data.Aluno().GetLista(request.Nome, request.Codigo);
 		}
 	}
 }

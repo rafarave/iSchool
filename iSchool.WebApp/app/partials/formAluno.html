@@ -1,4 +1,21 @@
 ﻿
+<div class="modal fade" id="modalDialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Estamos quase lá!</h4>
+			</div>
+			<div class="modal-body">
+				<p>Deseja cadastrar ou gerenciar os responsáveis por este aluno agora?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-warning" ng-click="redirecionaResponsavel()">Sim, me leve para Responsáveis</button>
+				<button type="button" class="btn btn-primary" ng-click="redirecionaAlunos()">Agora não, quero ir para Alunos</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <section class="content-header">
 	<h1>{{ modoForm }} Aluno</h1>
 </section>

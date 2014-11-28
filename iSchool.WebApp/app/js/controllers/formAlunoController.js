@@ -15,26 +15,44 @@ angular.module('iSchoolApp.controllers')
 		});
 	}
 
-	//TODO: validar campos e remover toaster
+	//TODO: validar campos
 	$scope.salvaAluno = function () {
 		if ($scope.modoForm == "Novo") {
 			alunosService.postAluno($scope.alunoEntity).success(function (data) {
 				toaster.pop('success', "Sucesso!", "Aluno criado com sucesso!");
-				$location.path("/alunos");
+				$scope.alunoEntity.Aluno.Id = data;//obter id gerado
+				$scope.showModal();
 			});
 		}
 		else {
 			alunosService.putAluno($scope.alunoEntity).success(function (data) {
 				toaster.pop('success', "Sucesso!", "Aluno modificado com sucesso!");
-				$location.path("/alunos");
+				$scope.showModal();
 			});
 		}
-		toaster.pop('success', "Sucesso!", "Aluno criado com sucesso!");
 	};
 
-	//TODO: decidir se volta pra tela de pesquisa ou se soh limpa os campos
 	$scope.cancela = function () {
 		$route.reload();
+	};
+
+	$scope.redirecionaResponsavel = function () {
+		$scope.hideModal();
+		$location.path("/alunos/responsavel/" + $scope.alunoEntity.Aluno.Id);
+	};
+
+	$scope.redirecionaAlunos = function () {
+		$scope.hideModal();
+		$location.path("/alunos");
+	};
+
+	$scope.showModal = function () {
+		$('#modalDialog').modal({ keyboard: false, backdrop: 'static' });
+	};
+
+	$scope.hideModal = function () {
+		$('.modal-backdrop').remove();
+		$('#modalDialog').modal('hide');
 	};
 
 });
